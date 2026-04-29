@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Log Purchase</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+:root{
+  --bg:#0E0E0F;--bg2:#161618;--bg3:#1E1E21;
+  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);
+  --text:#F0EEE9;--text2:#9B9890;--text3:#5A5855;
+  --green:#4ADE80;--red:#F87171;--yellow:#FCD34D;--blue:#60A5FA;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden}
+body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);font-size:15px;display:flex;flex-direction:column}
+
+.header{padding:16px 20px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.header-title{font-size:16px;font-weight:700;letter-spacing:-.02em}
+.sync-dot{width:8px;height:8px;border-radius:50%;background:var(--text3)}
+.sync-dot.ok{background:var(--green)}
+.sync-dot.err{background:var(--red)}
+.sync-dot.loading{background:var(--yellow);animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+.main{flex:1;overflow-y:auto;padding:16px 20px;display:flex;flex-direction:column;gap:12px}
+
+/* Input row */
+.input-card{background:var(--bg2);border:1px solid var(--border2);border-radius:14px;padding:16px;transition:border-color .2s}
+.input-card:focus-within{border-color:var(--green)}
+.big-input{width:100%;background:none;border:none;outline:none;font-size:22px;font-family:'Sora',sans-serif;color:var(--text);font-weight:500;caret-color:var(--green)}
+.big-input::placeholder{color:var(--text3)}
+.input-hint{font-size:12px;color:var(--text3);margin-top:6px}
+
+/* Selectors */
+.select-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sel-wrap label{font-size:11px;color:var(--text3);display:block;margin-bottom:4px;font-weight:500;letter-spacing:.05em;text-transform:uppercase}
+select{width:100%;background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:10px 12px;font-size:13px;font-family:'Sora',sans-serif;color:var(--text);outline:none;-webkit-appearance:none;appearance:none;cursor:pointer}
+select:focus{border-color:var(--border2)}
+
+/* Category result */
+.cat-result{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:14px 16px;display:none}
+.cat-result.show{display:block}
+.cat-result-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;font-weight:500}
+.cat-result-row{display:flex;justify-content:space-between;align-items:center}
+.cat-name{font-size:15px;font-weight:600}
+.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:99px;font-size:11px;font-weight:600}
+.bn{background:rgba(96,165,250,.15);color:#60A5FA}
+.bi{background:rgba(74,222,128,.15);color:#4ADE80}
+.bs{background:rgba(252,211,77,.15);color:#FCD34D}
+.bw{background:rgba(192,132,252,.15);color:#C084FC}
+
+/* Override dropdown */
+.override-wrap{margin-top:10px}
+.override-wrap label{font-size:11px;color:var(--text3);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em;font-weight:500}
+
+/* Chips */
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{background:var(--bg2);border:1px solid var(--border);border-radius:99px;padding:6px 14px;font-size:13px;color:var(--text2);cursor:pointer;transition:all .15s;white-space:nowrap}
+.chip:active{background:var(--bg3);border-color:var(--border2);color:var(--text)}
+
+/* Amount keypad */
+.amount-display{background:var(--bg2);border:1px solid var(--border2);border-radius:14px;padding:16px 20px;text-align:center}
+.amount-val{font-size:36px;font-weight:700;font-family:'JetBrains Mono',monospace;letter-spacing:-.02em;min-height:44px}
+.amount-hint{font-size:12px;color:var(--text3);margin-top:4px}
+
+/* Add button */
+.add-btn{background:var(--green);color:#071a0a;border:none;border-radius:14px;padding:16px;font-size:16px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;width:100%;transition:opacity .15s;flex-shrink:0}
+.add-btn:active{opacity:.8}
+.add-btn:disabled{opacity:.4;cursor:not-allowed}
+
+/* Speedbump */
+.speedbump{position:fixed;inset:0;background:rgba(0,0,0,.8);display:flex;align-items:flex-end;justify-content:center;z-index:50;padding:20px;opacity:0;pointer-events:none;transition:opacity .2s}
+.speedbump.show{opacity:1;pointer-events:all}
+.sb-card{background:var(--bg2);border:1px solid var(--yellow);border-radius:20px;padding:24px;width:100%;max-width:400px}
+.sb-icon{font-size:32px;margin-bottom:10px;text-align:center}
+.sb-title{font-size:17px;font-weight:700;margin-bottom:6px;text-align:center}
+.sb-msg{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:18px;text-align:center}
+.sb-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sb-btn{padding:12px;border-radius:10px;font-size:14px;font-weight:600;font-family:'Sora',sans-serif;cursor:pointer;border:none}
+.sb-log{background:var(--red);color:white}
+.sb-cancel{background:var(--bg3);color:var(--text)}
+
+/* Toast */
+.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-10px);background:var(--bg2);border:1px solid var(--border2);color:var(--text);padding:10px 20px;border-radius:10px;font-size:13px;font-weight:500;opacity:0;transition:all .25s;pointer-events:none;z-index:100;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* Recent list */
+.recent-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;font-weight:500;margin-bottom:8px}
+.recent-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)}
+.recent-item:last-child{border-bottom:none}
+.recent-merchant{font-size:13px;font-weight:500}
+.recent-cat{font-size:11px;color:var(--text3);margin-top:2px}
+.recent-amt{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600}
+</style>
+</head>
+<body>
+
+<div class="speedbump" id="speedbump">
+  <div class="sb-card">
+    <div class="sb-icon">⚠️</div>
+    <div class="sb-title" id="sb-title">Hold up.</div>
+    <div class="sb-msg" id="sb-msg"></div>
+    <div class="sb-btns">
+      <button class="sb-btn sb-log" onclick="sbProceed()">Log it anyway</button>
+      <button class="sb-btn sb-cancel" onclick="sbCancel()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-title">Log Purchase</div>
+  <div class="sync-dot" id="sync-dot"></div>
+</div>
+
+<div class="main">
+  <!-- Input -->
+  <div class="input-card">
+    <input class="big-input" id="main-input" placeholder='e.g. "Cava $17"' oninput="onInput()" onkeydown="if(event.key==='Enter')tryAdd()" autocomplete="off" autocorrect="off" spellcheck="false" />
+    <div class="input-hint">Type merchant + amount, or use chips below</div>
+  </div>
+
+  <!-- Selectors -->
+  <div class="select-row">
+    <div class="sel-wrap">
+      <label>Month</label>
+      <select id="sel-month">
+        <option>Jan</option><option>Feb</option><option>Mar</option><option selected>Apr</option>
+        <option>May</option><option>Jun</option><option>Jul</option><option>Aug</option>
+        <option>Sep</option><option>Oct</option><option>Nov</option><option>Dec</option>
+      </select>
+    </div>
+    <div class="sel-wrap">
+      <label>Card</label>
+      <select id="sel-card">
+        <option>Freedom Unlimited</option><option>Freedom Flex</option>
+        <option>Sapphire Reserve</option><option>Amazon Visa</option>
+        <option>Citi AA Premium</option><option>AMEX Blue Cash</option>
+        <option>Apple</option><option>Discover</option>
+        <option>Chase Checking</option><option>SoFi Checking</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Category result -->
+  <div class="cat-result" id="cat-result">
+    <div class="cat-result-label">Auto-categorized as</div>
+    <div class="cat-result-row">
+      <span class="cat-name" id="cat-name">—</span>
+      <span class="badge" id="cat-badge">—</span>
+    </div>
+    <div class="override-wrap">
+      <label>Override category</label>
+      <select id="cat-override">
+        <optgroup label="Needs"><option>Mortgage</option><option>Utilities (Electric/Water)</option><option>Phone and Internet</option><option>Car Payment - Loan</option><option>Bailey Insurance</option><option>Car Insurance</option><option>Transportation and Gas</option><option>Groceries and Household</option></optgroup>
+        <optgroup label="Investing"><option>Roth IRA</option><option>RDDT</option><option>JPM</option></optgroup>
+        <optgroup label="Savings"><option>Car Transmission</option><option>Credit Card Annual Fees</option><option>Emergency Fund 2.0</option><option>Coffee Machine</option><option>Travel</option><option>Gifts</option><option>Bailey Deductible</option><option>Dumb Mistakes</option><option>Wedding</option></optgroup>
+        <optgroup label="Wants"><option>Dining Out</option><option>Entertainment and Hobbies</option><option>Fitness (gym, classes)</option><option>Prime</option><option>Shopping / Personal Care</option></optgroup>
+      </select>
+    </div>
+  </div>
+
+  <!-- Quick chips -->
+  <div class="chips" id="chips"></div>
+
+  <!-- Recent -->
+  <div id="recent-wrap" style="display:none">
+    <div class="recent-label">Recent</div>
+    <div id="recent-list"></div>
+  </div>
+</div>
+
+<button class="add-btn" id="add-btn" onclick="tryAdd()" disabled>Add transaction</button>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── CONFIG ──
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyGl7Z7OIsTCV-9XZf4QlAPMKEelq7GVFN68jEy2w9hnPPIDkt3I9AbIWYVHJkjs8UMBg/exec';
+
+const BUDGET = {
+  needs:   {Mortgage:663,'Utilities (Electric/Water)':200,'Phone and Internet':80,'Car Payment - Loan':300,'Bailey Insurance':31.96,'Car Insurance':180,'Transportation and Gas':120,'Groceries and Household':350},
+  invest:  {'Roth IRA':720,RDDT:84,JPM:84},
+  savings: {'Car Transmission':280,'Credit Card Annual Fees':76,'Emergency Fund 2.0':125,'Coffee Machine':50,Travel:50,Gifts:40,'Bailey Deductible':14,'Dumb Mistakes':400,Wedding:100},
+  wants:   {'Dining Out':150,'Entertainment and Hobbies':100,'Fitness (gym, classes)':25,Prime:5.83,'Shopping / Personal Care':300}
+};
+const GL = {needs:'Needs',invest:'Investing',savings:'Savings',wants:'Wants'};
+const GB = {needs:'bn',invest:'bi',savings:'bs',wants:'bw'};
+
+let pendingTxn = null;
+let monthlyActual = {};
+
+// ── RULES (same as desktop) ──
+function categorize(text) {
+  const t = text.toLowerCase();
+  const negMatch = t.match(/-\s*\$?([\d,]+\.?\d*)/);
+  const posMatch = t.match(/\$?([\d,]+\.?\d*)/);
+  const isNeg = !!negMatch;
+  const rawAmt = negMatch ? negMatch[1] : (posMatch ? posMatch[1] : '0');
+  const amount = (isNeg ? -1 : 1) * parseFloat(rawAmt.replace(',',''));
+
+  const direct = [
+    [/^travel(\s|\$|$)/,'Travel','savings'],
+    [/^wedding(\s|\$|$)/,'Wedding','savings'],
+    [/^gifts?(\s|\$|$)/,'Gifts','savings'],
+    [/^dumb mistake/,'Dumb Mistakes','savings'],
+    [/^coffee machine/,'Coffee Machine','savings'],
+    [/^emergency fund/,'Emergency Fund 2.0','savings'],
+    [/^bailey deduct/,'Bailey Deductible','savings'],
+    [/^cc annual|^credit card.*fee/,'Credit Card Annual Fees','savings'],
+    [/^car trans/,'Car Transmission','savings'],
+    [/^roth ira/,'Roth IRA','invest'],
+    [/^rddt/,'RDDT','invest'],
+    [/^jpm/,'JPM','invest'],
+  ];
+  for(const [p,c,g] of direct) if(p.test(t)) return {category:c,group:g,confidence:'high',amount};
+
+  const rules = [
+    [/transmiss|auto repair|mechanic|jiffy lube|oil change|tire|brakes|pedro.?s auto/,'Car Transmission','savings'],
+    [/annual fee|card fee/,'Credit Card Annual Fees','savings'],
+    [/mortgage|hoa|rent\b/,'Mortgage','needs'],
+    [/talquin|electric|water bill|xfinity|comcast|at&t|verizon|spectrum|internet/,'Utilities (Electric/Water)','needs'],
+    [/car.*insur|auto.*insur|geico|progressive|state farm/,'Car Insurance','needs'],
+    [/planet fitness|gym|ymca|crossfit|orange theory|la fitness/,'Fitness (gym, classes)','wants'],
+    [/shell|bp\b|exxon|chevron|sunoco|marathon|mobil|costco.*gas|gas station/,'Transportation and Gas','needs'],
+    [/lyft|uber\b|parking|garage|toll|sunpass/,'Transportation and Gas','needs'],
+    [/publix|kroger|aldi|whole foods|trader joe|sprouts|meijer|wegmans/,'Groceries and Household','needs'],
+    [/\bcostco\b(?!.*gas)/,'Groceries and Household','needs'],
+    [/walmart(?!.*gas)/,'Groceries and Household','needs'],
+    [/restaurant|cava|chipotle|chick.?fil|mcdonald|burger king|wendy|taco bell|popeyes|domino|subway\b|five guys|shake shack|culver|poke|sushi|ramen|grill\b|bistro|tavern/,'Dining Out','wants'],
+    [/doordash|ubereats|grubhub/,'Dining Out','wants'],
+    [/starbucks|dunkin|dutch bros|coffee(?!.*machine)|panera/,'Dining Out','wants'],
+    [/netflix|hulu|disney|spotify|hbo|peacock|amc\b|cinemark|nintendo|steam|ticketmaster|tickets.*at.*work/,'Entertainment and Hobbies','wants'],
+    [/amazon|amzn/,'Shopping / Personal Care','wants'],
+    [/target\b|marshall|tj maxx|ross\b|nordstrom|macy|gap\b|old navy|abercrombie/,'Shopping / Personal Care','wants'],
+    [/cvs|walgreen|pharmacy/,'Shopping / Personal Care','wants'],
+    [/prime\b/,'Prime','wants'],
+    [/chase travel|expedia|airbnb|delta|american air|southwest|united air/,'Dumb Mistakes','savings'],
+  ];
+  for(const [p,c,g] of rules) if(p.test(t)) return {category:c,group:g,confidence:'high',amount};
+  return {category:'Shopping / Personal Care',group:'wants',confidence:'low',amount};
+}
+
+function parseMerchant(text) {
+  return text.replace(/-?\s*\$[\d,]+\.?\d*/g,'').replace(/-\s*[\d,]+\.?\d*/g,'')
+    .replace(/\b(at|the|from|for|paid|spent|buying|bought)\b/gi,'')
+    .trim().replace(/\s+/g,' ').split(' ').slice(0,4).join(' ').trim() || text.trim();
+}
+
+function getCatGroup(cat) {
+  for(const [g,cats] of Object.entries(BUDGET)) if(cat in cats) return g;
+  return 'wants';
+}
+
+function getBudgetFor(cat) {
+  for(const g of Object.values(BUDGET)) if(cat in g) return g[cat];
+  return 0;
+}
+
+// ── INPUT HANDLING ──
+function onInput() {
+  const raw = document.getElementById('main-input').value.trim();
+  const btn = document.getElementById('add-btn');
+  const result_el = document.getElementById('cat-result');
+
+  if(!raw) { result_el.classList.remove('show'); btn.disabled=true; return; }
+
+  const r = categorize(raw);
+  document.getElementById('cat-name').textContent = r.category;
+  const gc = GB[r.group]||'bw';
+  const badge = document.getElementById('cat-badge');
+  badge.textContent = GL[r.group];
+  badge.className = 'badge ' + gc;
+  document.getElementById('cat-override').value = r.category;
+  result_el.classList.add('show');
+  btn.disabled = false;
+}
+
+function tryAdd() {
+  const raw = document.getElementById('main-input').value.trim();
+  if(!raw) return;
+  const month = document.getElementById('sel-month').value;
+  const card  = document.getElementById('sel-card').value;
+  const r     = categorize(raw);
+  const cat   = document.getElementById('cat-override').value;
+  const group = getCatGroup(cat);
+  const merchant = parseMerchant(raw);
+  const txn = {merchant, category:cat, group, card, month, amount:r.amount};
+
+  if(r.amount < 0) { submitTxn(txn); return; }
+
+  // speedbump check
+  const budget  = getBudgetFor(cat);
+  const actual  = monthlyActual[cat] || 0;
+  const pct     = budget ? (actual/budget)*100 : 0;
+  if(budget && pct >= 80) {
+    pendingTxn = txn;
+    const over = pct >= 100;
+    const rem  = budget - actual;
+    document.getElementById('sb-title').textContent = over ? `Over budget on ${cat}` : `Almost out — ${cat}`;
+    document.getElementById('sb-msg').innerHTML = over
+      ? `You've spent <strong>$${Math.round(actual)}</strong> of your <strong>$${budget}</strong> budget. This $${Math.abs(r.amount).toFixed(2)} puts you <strong>$${Math.abs(Math.round(rem-r.amount))} over</strong>.`
+      : `<strong>${Math.round(pct)}%</strong> used. Only <strong>$${Math.round(rem)}</strong> left this month.`;
+    document.getElementById('speedbump').classList.add('show');
+  } else {
+    submitTxn(txn);
+  }
+}
+
+function sbProceed(){ document.getElementById('speedbump').classList.remove('show'); if(pendingTxn){submitTxn(pendingTxn);pendingTxn=null;} }
+function sbCancel(){ document.getElementById('speedbump').classList.remove('show'); pendingTxn=null; toast('Cancelled'); }
+
+// ── API ──
+function setSyncDot(state){ const d=document.getElementById('sync-dot'); d.className='sync-dot '+state; }
+
+async function api(action, body={}) {
+  setSyncDot('loading');
+  try {
+    const res = await fetch(APPS_SCRIPT_URL + '?action=' + action, {
+      method:'POST', body:JSON.stringify({action,...body}),
+      headers:{'Content-Type':'application/json'}
+    });
+    const data = await res.json();
+    setSyncDot('ok');
+    return data;
+  } catch(e) {
+    setSyncDot('err');
+    throw e;
+  }
+}
+
+async function submitTxn(txn) {
+  document.getElementById('add-btn').disabled = true;
+  document.getElementById('add-btn').textContent = 'Saving...';
+  try {
+    await api('addTxn', txn);
+    document.getElementById('main-input').value = '';
+    document.getElementById('cat-result').classList.remove('show');
+    document.getElementById('add-btn').disabled = true;
+    monthlyActual[txn.category] = (monthlyActual[txn.category]||0) + txn.amount;
+    toast(`✓ ${txn.merchant} $${Math.abs(txn.amount).toFixed(2)}`);
+    loadRecent();
+  } catch(e) {
+    toast('Error saving — check connection');
+    document.getElementById('add-btn').disabled = false;
+  }
+  document.getElementById('add-btn').textContent = 'Add transaction';
+}
+
+async function loadRecent() {
+  try {
+    const data = await api('getAll');
+    const month = document.getElementById('sel-month').value;
+    const txns = (data.transactions||[]).filter(t=>t.month===month);
+
+    // update monthly actual for speedbump
+    monthlyActual = {};
+    txns.forEach(t=>{ monthlyActual[t.category]=(monthlyActual[t.category]||0)+Number(t.amount); });
+
+    // show last 5
+    const recent = txns.slice(-5).reverse();
+    const wrap = document.getElementById('recent-wrap');
+    const list = document.getElementById('recent-list');
+    if(!recent.length){ wrap.style.display='none'; return; }
+    wrap.style.display='block';
+    list.innerHTML = recent.map(t=>`
+      <div class="recent-item">
+        <div><div class="recent-merchant">${t.merchant}</div><div class="recent-cat">${t.category}</div></div>
+        <div class="recent-amt" style="color:${Number(t.amount)<0?'var(--green)':'var(--text)'}">
+          ${Number(t.amount)<0?'+':''}$${Math.abs(Number(t.amount)).toFixed(2)}
+        </div>
+      </div>`).join('');
+  } catch(e){ /* silent */ }
+}
+
+// ── CHIPS ──
+function buildChips() {
+  const defaults = ['Publix','Costco','Cava','Amazon','Target','Costco Gas','DoorDash','Chipotle','Travel','Dumb Mistakes'];
+  document.getElementById('chips').innerHTML = defaults.map(m=>
+    `<div class="chip" onclick="chipClick('${m}')">${m}</div>`).join('');
+}
+
+function chipClick(m) {
+  document.getElementById('main-input').value = m + ' ';
+  document.getElementById('main-input').focus();
+  onInput();
+}
+
+function toast(msg,d=2500) {
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),d);
+}
+
+buildChips();
+loadRecent();
+</script>
+</body>
+</html>
