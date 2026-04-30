@@ -1,87 +1,705 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2487.7">
-  <style type="text/css">
-    body {background-color: #0c0c0d}
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 36.0px '.Apple Color Emoji UI'; color: #eceae4; -webkit-text-stroke: #eceae4}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 17.0px 'Helvetica Neue'; color: #eceae4; -webkit-text-stroke: #eceae4}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 13.0px 'Helvetica Neue'; color: #89867d; -webkit-text-stroke: #89867d; min-height: 16.0px}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 13.0px 'Helvetica Neue'; color: #f3595e; -webkit-text-stroke: #f3595e; background-color: #171719}
-    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 15.0px 'Helvetica Neue'; color: #eceae4; -webkit-text-stroke: #eceae4}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px 'Helvetica Neue'; color: #484643; -webkit-text-stroke: #484643}
-    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; color: #eceae4; -webkit-text-stroke: #eceae4; min-height: 16.0px}
-    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; color: #eceae4; -webkit-text-stroke: #eceae4}
-    p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; color: #89867d; -webkit-text-stroke: #89867d; min-height: 16.0px}
-    p.p10 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; color: #89867d; -webkit-text-stroke: #89867d}
-    p.p11 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #484643; -webkit-text-stroke: #484643}
-    p.p12 {margin: 0.0px 0.0px 0.0px 0.0px; font: 24.0px 'Helvetica Neue'; color: #eceae4; -webkit-text-stroke: #eceae4}
-    p.p13 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px 'Helvetica Neue'; color: #484643; -webkit-text-stroke: #484643; min-height: 17.0px}
-    p.p14 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #89867d; -webkit-text-stroke: #89867d; background-color: #171719; min-height: 15.0px}
-    p.p15 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; color: #89867d; -webkit-text-stroke: #89867d; background-color: #111113}
-    p.p16 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 13.0px 'Helvetica Neue'; color: #09150a; -webkit-text-stroke: #09150a; background-color: #41db6d}
-    p.p17 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #4f91f8; -webkit-text-stroke: #4f91f8}
-    p.p18 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; color: #eceae4; -webkit-text-stroke: #eceae4; min-height: 14.0px}
-    p.p19 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px 'Helvetica Neue'; color: #eceae4; -webkit-text-stroke: #eceae4; min-height: 17.0px}
-    p.p20 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #41db6d; -webkit-text-stroke: #41db6d}
-    p.p21 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #facb3d; -webkit-text-stroke: #facb3d}
-    p.p22 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #b168fb; -webkit-text-stroke: #b168fb}
-    p.p23 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; color: #eceae4; -webkit-text-stroke: #eceae4; background-color: #111113; min-height: 16.0px}
-    span.s1 {font-kerning: none; background-color: #111113}
-    span.s2 {font-kerning: none}
-    span.s3 {font: 14.0px 'Helvetica Neue'; font-kerning: none; color: #eceae4; background-color: #111113; -webkit-text-stroke: 0px #eceae4}
-    span.s4 {font-kerning: none; color: #eceae4; -webkit-text-stroke: 0px #eceae4}
-    span.s5 {font-kerning: none; color: #41db6d; background-color: #111113; -webkit-text-stroke: 0px #41db6d}
-    span.s6 {font-kerning: none; background-color: #171719}
-    span.s7 {font: 12.0px 'Helvetica Neue'; font-kerning: none; background-color: #171719}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedro's Finance Tracker</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+:root{--bg:#0E0E0F;--bg2:#161618;--bg3:#1E1E21;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);--text:#F0EEE9;--text2:#9B9890;--text3:#5A5855;--needs:#60A5FA;--needs-bg:rgba(96,165,250,0.12);--invest:#4ADE80;--invest-bg:rgba(74,222,128,0.12);--savings:#FCD34D;--savings-bg:rgba(252,211,77,0.12);--wants:#C084FC;--wants-bg:rgba(192,132,252,0.12);--danger:#F87171;--danger-bg:rgba(248,113,113,0.12);--warn:#FB923C;--ok:#4ADE80;--r:10px;--rl:14px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px}
+.app{display:flex;min-height:100vh}
+.sidebar{width:220px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);padding:24px 14px;position:fixed;top:0;left:0;bottom:0;display:flex;flex-direction:column;gap:2px;z-index:20;overflow-y:auto}
+.logo{font-size:15px;font-weight:700;letter-spacing:-.02em;padding:4px 10px 20px;color:var(--text)}.logo span{color:var(--invest)}
+.nav-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:10px 10px 4px}
+.nav-item{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:400;color:var(--text2);transition:all .15s;border:none;background:none;width:100%;text-align:left;font-family:'Sora',sans-serif}
+.nav-item:hover{background:var(--bg3);color:var(--text)}.nav-item.active{background:var(--bg3);color:var(--text);font-weight:500}
+.nav-item svg{width:15px;height:15px;flex-shrink:0}
+.sidebar-footer{margin-top:auto;padding-top:16px;border-top:1px solid var(--border);font-size:11px;color:var(--text3);padding-left:10px;line-height:1.7}
+.main{margin-left:220px;flex:1;padding:36px 40px;max-width:calc(100% - 220px)}
+.page{display:none}.page.active{display:block}
+.page-header{margin-bottom:28px}
+.page-title{font-size:24px;font-weight:700;letter-spacing:-.03em;margin-bottom:4px}
+.page-sub{font-size:13px;color:var(--text2)}
+
+/* Quick add */
+.quick-wrap{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--rl);padding:18px 20px;margin-bottom:16px;transition:border-color .2s}
+.quick-wrap:focus-within{border-color:var(--invest)}
+.quick-row{display:flex;gap:10px;align-items:center;margin-bottom:12px}
+.quick-input{flex:1;background:none;border:none;outline:none;font-size:15px;font-family:'Sora',sans-serif;color:var(--text);font-weight:400}
+.quick-input::placeholder{color:var(--text3)}
+.mini-select{background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:5px 8px;font-size:12px;color:var(--text2);font-family:'Sora',sans-serif;outline:none;cursor:pointer}
+.mini-select:focus{border-color:var(--border2)}
+.add-btn{background:var(--invest);color:#071a0a;border:none;border-radius:8px;padding:8px 18px;font-size:13px;font-weight:600;font-family:'Sora',sans-serif;cursor:pointer;white-space:nowrap;transition:opacity .15s}
+.add-btn:hover{opacity:.85}
+.add-btn:disabled{opacity:.4;cursor:not-allowed}
+
+/* Category picker row */
+.cat-picker{display:none;gap:8px;align-items:center;padding-top:10px;border-top:1px solid var(--border);margin-top:4px;flex-wrap:wrap}
+.cat-picker.show{display:flex}
+.cat-picker-label{font-size:12px;color:var(--text2);flex-shrink:0}
+.cat-picker select{background:var(--bg3);border:1px solid var(--border2);border-radius:7px;padding:5px 10px;font-size:12px;color:var(--text);font-family:'Sora',sans-serif;outline:none;width:auto}
+.confirm-btn{background:var(--invest);color:#071a0a;border:none;border-radius:7px;padding:6px 14px;font-size:12px;font-weight:600;font-family:'Sora',sans-serif;cursor:pointer}
+
+/* Chips */
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.chip{background:var(--bg2);border:1px solid var(--border);border-radius:99px;padding:4px 12px;font-size:12px;color:var(--text2);cursor:pointer;transition:all .15s;white-space:nowrap}
+.chip:hover{border-color:var(--border2);color:var(--text)}
+
+/* Speed bump */
+.speedbump{position:fixed;inset:0;background:rgba(0,0,0,.75);display:flex;align-items:center;justify-content:center;z-index:50;backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .2s}
+.speedbump.show{opacity:1;pointer-events:all}
+.sb-card{background:var(--bg2);border:1px solid var(--warn);border-radius:var(--rl);padding:28px 32px;max-width:380px;width:90%;text-align:center}
+.sb-icon{font-size:36px;margin-bottom:12px}
+.sb-title{font-size:17px;font-weight:700;margin-bottom:6px}
+.sb-msg{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:20px}
+.sb-actions{display:flex;gap:10px;justify-content:center}
+
+/* Metrics */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.metric{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px}
+.metric-label{font-size:11px;color:var(--text3);margin-bottom:5px;font-weight:500;letter-spacing:.05em;text-transform:uppercase}
+.metric-val{font-size:22px;font-weight:700;letter-spacing:-.03em;font-family:'JetBrains Mono',monospace}
+.metric-sub{font-size:11px;color:var(--text3);margin-top:3px}
+
+/* Budget cards */
+.budget-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.budget-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);padding:18px 20px}
+.bc-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.bc-title{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase}
+.bc-total{font-size:12px;font-family:'JetBrains Mono',monospace;font-weight:500}
+.cat-row{margin-bottom:10px}.cat-row:last-child{margin-bottom:0}
+.cat-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
+.cat-name{font-size:12px;font-weight:500}
+.cat-rem{font-size:11px;font-family:'JetBrains Mono',monospace}
+.pb{height:4px;background:var(--bg3);border-radius:2px;overflow:hidden}
+.pf{height:100%;border-radius:2px;transition:width .6s cubic-bezier(.4,0,.2,1)}
+.cat-sub{display:flex;justify-content:space-between;margin-top:2px}
+.cat-sub span{font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace}
+
+/* Cards/tables */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);padding:20px;margin-bottom:14px}
+.card-title{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--text3);margin-bottom:14px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--text3);padding:0 8px 10px;text-align:left;border-bottom:1px solid var(--border)}
+th:last-child{text-align:right}
+td{padding:9px 8px;border-bottom:1px solid var(--border);vertical-align:middle}
+td:last-child{text-align:right}
+tr:last-child td{border-bottom:none}
+
+/* Badges */
+.badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:99px;font-size:10px;font-weight:600;white-space:nowrap;letter-spacing:.03em}
+.bn{background:var(--needs-bg);color:var(--needs)}
+.bi{background:var(--invest-bg);color:var(--invest)}
+.bs{background:var(--savings-bg);color:var(--savings)}
+.bw{background:var(--wants-bg);color:var(--wants)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border2);background:var(--bg3);color:var(--text);font-family:'Sora',sans-serif;transition:all .15s}
+.btn:hover{border-color:var(--text3)}
+.btn-primary{background:var(--invest);color:#071a0a;border-color:var(--invest)}
+.btn-primary:hover{opacity:.85}
+.btn-danger{border-color:var(--danger);color:var(--danger)}
+
+/* Inputs */
+input[type=text],input[type=password],input[type=number],select,textarea{width:100%;padding:8px 12px;border:1px solid var(--border2);border-radius:8px;font-size:13px;font-family:'Sora',sans-serif;background:var(--bg3);color:var(--text);outline:none;transition:border .15s}
+input:focus,select:focus,textarea:focus{border-color:var(--text3)}
+textarea{resize:vertical;line-height:1.5}
+select option{background:var(--bg2)}
+.form-label{font-size:12px;color:var(--text2);margin-bottom:4px;display:block}
+
+/* Del btn */
+.del-btn{background:none;border:none;cursor:pointer;color:var(--text3);font-size:16px;padding:2px 4px;border-radius:4px;transition:color .15s;line-height:1}
+.del-btn:hover{color:var(--danger)}
+
+/* Toast */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--bg2);border:1px solid var(--border2);color:var(--text);padding:10px 18px;border-radius:8px;font-size:13px;font-weight:500;opacity:0;transform:translateY(8px);transition:all .25s;pointer-events:none;z-index:100}
+.toast.show{opacity:1;transform:translateY(0)}
+
+.row{display:flex;gap:12px}.row>*{flex:1;min-width:0}
+@media(max-width:900px){.budget-grid{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.sidebar{width:100%;position:static}.main{margin-left:0;padding:16px}.metrics{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-<p class="p1"><span class="s1">⚠️</span></p>
-<p class="p2"><span class="s1">Hold up.</span></p>
-<p class="p3"><span class="s2"></span><br></p>
-<p class="p4"><span class="s2">Log it anyway</span><span class="s3"> </span><span class="s4">Cancel</span></p>
-<p class="p5"><span class="s1">Pedro's </span><span class="s5">Finance</span></p>
-<p class="p6"><span class="s1">MAIN</span></p>
-<p class="p7"><span class="s2"></span><br></p>
-<p class="p8"><span class="s6">Dashboard</span></p>
-<p class="p9"><span class="s2"></span><br></p>
-<p class="p10"><span class="s1">Transactions</span></p>
-<p class="p9"><span class="s2"></span><br></p>
-<p class="p10"><span class="s1">Settings</span></p>
-<p class="p11"><span class="s1">No API key needed.</span></p>
-<p class="p11"><span class="s1">All data stored locally.</span></p>
-<p class="p11"><span class="s1">Nothing leaves your Mac.</span></p>
-<p class="p12"><span class="s2">Dashboard</span></p>
-<p class="p10"><span class="s2">Type any purchase — auto-categorized instantly, no internet needed</span></p>
-<p class="p13"><span class="s2"></span><br></p>
-<p class="p14"><span class="s2"></span><br></p>
-<p class="p15"><span class="s7"><span class="Apple-converted-space">        </span></span><span class="s2">JanFebMarApr</span></p>
-<p class="p15"><span class="s7"><span class="Apple-converted-space">        </span></span><span class="s2">MayJunJulAug</span></p>
-<p class="p15"><span class="s7"><span class="Apple-converted-space">        </span></span><span class="s2">SepOctNovDec</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">      </span></span></p>
-<p class="p15"><span class="s7"><span class="Apple-converted-space">        </span></span><span class="s2">Freedom UnlimitedFreedom Flex</span></p>
-<p class="p15"><span class="s7"><span class="Apple-converted-space">        </span></span><span class="s2">Sapphire ReserveAmazon Visa</span></p>
-<p class="p15"><span class="s7"><span class="Apple-converted-space">        </span></span><span class="s2">Citi AAAMEXApple</span></p>
-<p class="p15"><span class="s7"><span class="Apple-converted-space">        </span></span><span class="s2">DiscoverChase CheckingSoFi Checking</span></p>
-<p class="p14"><span class="s2"><span class="Apple-converted-space">      </span></span></p>
-<p class="p16"><span class="s2">Add</span></p>
-<p class="p17"><span class="s1">NEEDS</span></p>
-<p class="p18"><span class="s2"></span><br></p>
-<p class="p19"><span class="s2"></span><br></p>
-<p class="p20"><span class="s1">INVESTING</span></p>
-<p class="p18"><span class="s2"></span><br></p>
-<p class="p19"><span class="s2"></span><br></p>
-<p class="p21"><span class="s1">SAVINGS</span></p>
-<p class="p18"><span class="s2"></span><br></p>
-<p class="p19"><span class="s2"></span><br></p>
-<p class="p22"><span class="s1">WANTS</span></p>
-<p class="p18"><span class="s2"></span><br></p>
-<p class="p19"><span class="s2"></span><br></p>
-<p class="p23"><span class="s2"></span><br></p>
+
+<!-- SPEEDBUMP -->
+<div class="speedbump" id="speedbump">
+  <div class="sb-card">
+    <div class="sb-icon">⚠️</div>
+    <div class="sb-title" id="sb-title">Hold up.</div>
+    <div class="sb-msg" id="sb-msg"></div>
+    <div class="sb-actions">
+      <button class="btn btn-danger" onclick="sbProceed()">Log it anyway</button>
+      <button class="btn" onclick="sbCancel()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div class="app">
+<nav class="sidebar">
+  <div class="logo">Pedro's <span>Finance</span></div>
+  <div class="nav-label">Main</div>
+  <button class="nav-item active" data-page="dashboard" onclick="nav(this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+    Dashboard
+  </button>
+  <button class="nav-item" data-page="log" onclick="nav(this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+    Transactions
+  </button>
+  <button class="nav-item" data-page="settings" onclick="nav(this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    Settings
+  </button>
+  <div class="sidebar-footer">
+    No API key needed.<br>
+    All data stored locally.<br>
+    Nothing leaves your Mac.
+  </div>
+</nav>
+
+<main class="main">
+
+<!-- DASHBOARD -->
+<div id="page-dashboard" class="page active">
+  <div class="page-header">
+    <div class="page-title">Dashboard</div>
+    <div class="page-sub">Type any purchase — auto-categorized instantly, no internet needed</div>
+  </div>
+
+  <!-- Quick add -->
+  <div class="quick-wrap">
+    <div class="quick-row">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;flex-shrink:0;color:var(--text3)"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+      <input class="quick-input" id="quick-input" placeholder='Type: "Cava $17"  or  "Costco gas $50"  or  "$280 car transmission"' onkeydown="if(event.key==='Enter')quickAdd()" oninput="onInputChange()" />
+      <select class="mini-select" id="quick-month">
+        <option>Jan</option><option>Feb</option><option>Mar</option><option selected>Apr</option>
+        <option>May</option><option>Jun</option><option>Jul</option><option>Aug</option>
+        <option>Sep</option><option>Oct</option><option>Nov</option><option>Dec</option>
+      </select>
+      <select class="mini-select" id="quick-card" style="width:160px">
+        <option>Freedom Unlimited</option><option>Freedom Flex</option>
+        <option>Sapphire Reserve</option><option>Amazon Visa</option>
+        <option>Citi AA</option><option>AMEX</option><option>Apple</option>
+        <option>Discover</option><option>Chase Checking</option><option>SoFi Checking</option>
+      </select>
+      <button class="add-btn" id="quick-btn" onclick="quickAdd()">Add</button>
+    </div>
+    <!-- Category picker shown when unsure -->
+    <div class="cat-picker" id="cat-picker">
+      <span class="cat-picker-label">Category:</span>
+      <select id="cat-override">
+        <optgroup label="Needs"><option>Mortgage</option><option>Utilities (Electric/Water)</option><option>Phone and Internet</option><option>Car Payment - Loan</option><option>Bailey Insurance</option><option>Car Insurance</option><option>Transportation and Gas</option><option>Groceries and Household</option></optgroup>
+        <optgroup label="Investing"><option>Roth IRA</option><option>RDDT</option><option>JPM</option></optgroup>
+        <optgroup label="Savings"><option>Car Transmission</option><option>Credit Card Annual Fees</option><option>Emergency Fund 2.0</option><option>Coffee Machine</option><option>Travel</option><option>Gifts</option><option>Bailey Deductible</option><option>Dumb Mistakes</option><option>Wedding</option></optgroup>
+        <optgroup label="Wants"><option>Dining Out</option><option>Entertainment and Hobbies</option><option>Fitness (gym, classes)</option><option>Prime</option><option>Shopping / Personal Care</option></optgroup>
+      </select>
+      <button class="confirm-btn" onclick="confirmWithOverride()">Confirm</button>
+      <button class="btn" style="padding:5px 12px;font-size:12px" onclick="hidePicker()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Frequent merchants -->
+  <div class="chips" id="chips"></div>
+
+  <div class="metrics" id="dash-metrics"></div>
+
+  <div class="budget-grid">
+    <div class="budget-card"><div class="bc-header"><span class="bc-title" style="color:var(--needs)">Needs</span><span class="bc-total" id="bt-needs"></span></div><div id="cats-needs"></div></div>
+    <div class="budget-card"><div class="bc-header"><span class="bc-title" style="color:var(--invest)">Investing</span><span class="bc-total" id="bt-invest"></span></div><div id="cats-invest"></div></div>
+    <div class="budget-card"><div class="bc-header"><span class="bc-title" style="color:var(--savings)">Savings</span><span class="bc-total" id="bt-savings"></span></div><div id="cats-savings"></div></div>
+    <div class="budget-card"><div class="bc-header"><span class="bc-title" style="color:var(--wants)">Wants</span><span class="bc-total" id="bt-wants"></span></div><div id="cats-wants"></div></div>
+  </div>
+</div>
+
+<!-- TRANSACTIONS -->
+<div id="page-log" class="page">
+  <div class="page-header"><div class="page-title">Transactions</div><div class="page-sub">Every logged purchase</div></div>
+  <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;align-items:center">
+    <select id="log-month" onchange="renderLog()" style="width:120px">
+      <option value="all">All months</option>
+      <option>Jan</option><option>Feb</option><option>Mar</option><option selected>Apr</option>
+      <option>May</option><option>Jun</option><option>Jul</option><option>Aug</option>
+      <option>Sep</option><option>Oct</option><option>Nov</option><option>Dec</option>
+    </select>
+    <select id="log-group" onchange="renderLog()" style="width:130px">
+      <option value="all">All groups</option><option value="needs">Needs</option>
+      <option value="invest">Investing</option><option value="savings">Savings</option><option value="wants">Wants</option>
+    </select>
+    <button class="btn" onclick="exportCSV()" style="margin-left:auto">Export CSV</button>
+    <button class="btn btn-danger" onclick="clearAll()">Clear all</button>
+  </div>
+  <div class="card">
+    <table>
+      <thead><tr><th>Month</th><th>Merchant</th><th>Category</th><th>Group</th><th>Card</th><th>Amount</th><th></th></tr></thead>
+      <tbody id="log-tbody"></tbody>
+    </table>
+    <div id="log-empty" style="text-align:center;padding:32px;color:var(--text3);display:none">No transactions yet. Start adding from the Dashboard.</div>
+  </div>
+</div>
+
+<!-- SETTINGS -->
+<div id="page-settings" class="page">
+  <div class="page-header"><div class="page-title">Settings</div><div class="page-sub">Budget amounts — edit to match your current budget sheet</div></div>
+  <div class="card">
+    <div class="card-title">Monthly Budget</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px" id="budget-editor"></div>
+    <button class="btn btn-primary" onclick="saveBudget()" style="margin-top:16px">Save budget</button>
+  </div>
+</div>
+
+</main>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+
+// ── GOOGLE SHEETS SYNC ──
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyGl7Z7OIsTCV-9XZf4QlAPMKEelq7GVFN68jEy2w9hnPPIDkt3I9AbIWYVHJkjs8UMBg/exec';
+let syncing = false;
+
+function setSyncStatus(state, msg) {
+  const el = document.getElementById('sync-status');
+  if(!el) return;
+  const colors = {ok:'var(--green)', err:'var(--danger)', loading:'var(--savings)'};
+  el.textContent = msg;
+  el.style.color = colors[state] || 'var(--text3)';
+}
+
+async function apiCall(action, body={}) {
+  try {
+    setSyncStatus('loading', '⟳ syncing...');
+    const res = await fetch(APPS_SCRIPT_URL + '?action=' + action, {
+      method: 'POST',
+      body: JSON.stringify({action, ...body}),
+      headers: {'Content-Type': 'application/json'}
+    });
+    const data = await res.json();
+    if(data.error) throw new Error(data.error);
+    setSyncStatus('ok', '✓ synced');
+    setTimeout(()=>setSyncStatus('ok',''), 2000);
+    return data;
+  } catch(e) {
+    setSyncStatus('err', '✗ offline');
+    throw e;
+  }
+}
+
+async function loadFromSheets() {
+  if(APPS_SCRIPT_URL === 'PASTE_YOUR_APPS_SCRIPT_URL_HERE') return;
+  try {
+    const data = await apiCall('getAll');
+    if(data.transactions) transactions = data.transactions.map(t=>({...t, amount: Number(t.amount)}));
+    save();
+    renderDashboard();
+    renderLog();
+    setSyncStatus('ok', '✓ loaded from Sheets');
+  } catch(e) { /* use localStorage fallback */ }
+}
+
+async function pushTxn(txn) {
+  if(APPS_SCRIPT_URL === 'PASTE_YOUR_APPS_SCRIPT_URL_HERE') return;
+  try { await apiCall('addTxn', txn); } catch(e) { /* offline, localStorage still saved */ }
+}
+
+async function deleteTxnRemote(id) {
+  if(APPS_SCRIPT_URL === 'PASTE_YOUR_APPS_SCRIPT_URL_HERE') return;
+  try { await apiCall('deleteTxn', {id}); } catch(e) {}
+}
+
+// ── STATE ──
+let transactions = JSON.parse(localStorage.getItem('pfx_txns')||'[]');
+let pendingTxn = null;
+
+const DEFAULT_BUDGET = {
+  needs:   {Mortgage:663,'Utilities (Electric/Water)':200,'Phone and Internet':80,'Car Payment - Loan':300,'Bailey Insurance':31.96,'Car Insurance':180,'Transportation and Gas':120,'Groceries and Household':350},
+  invest:  {'Roth IRA':720,RDDT:84,JPM:84},
+  savings: {'Car Transmission':280,'Credit Card Annual Fees':76,'Emergency Fund 2.0':125,'Coffee Machine':50,Travel:50,Gifts:40,'Bailey Deductible':14,'Dumb Mistakes':400,Wedding:100},
+  wants:   {'Dining Out':150,'Entertainment and Hobbies':100,'Fitness (gym, classes)':25,Prime:5.83,'Shopping / Personal Care':300}
+};
+let BUDGET = JSON.parse(localStorage.getItem('pfx_budget')||JSON.stringify(DEFAULT_BUDGET));
+
+const GL = {needs:'Needs',invest:'Investing',savings:'Savings',wants:'Wants'};
+const GB = {needs:'bn',invest:'bi',savings:'bs',wants:'bw'};
+const GC = {needs:'var(--needs)',invest:'var(--invest)',savings:'var(--savings)',wants:'var(--wants)'};
+
+// ── RULE-BASED CATEGORIZER ──
+// Returns {category, group, confidence: 'high'|'low'}
+function categorize(text) {
+  const t = text.toLowerCase();
+
+  // Extract amount — support negative (withdrawal from fund): "-$50" or "Dumb Mistakes -50"
+  const negMatch = t.match(/-\s*\$?([\d,]+\.?\d*)/);
+  const posMatch = t.match(/\$?([\d,]+\.?\d*)/);
+  const isNegative = !!negMatch;
+  const rawAmt = negMatch ? negMatch[1] : (posMatch ? posMatch[1] : '0');
+  const amount = (isNegative ? -1 : 1) * parseFloat(rawAmt.replace(',',''));
+
+  // Direct savings fund name matches — typing the fund name directly always maps to savings
+  const savingsFundNames = [
+    [/^travel(\s|\$|$)/,'Travel','savings'],
+    [/^indy(\s|move|\$|$)/,'Travel','savings'],
+    [/^wedding(\s|\$|$)/,'Wedding','savings'],
+    [/^gifts?(\s|\$|$)/,'Gifts','savings'],
+    [/^dumb mistake/,'Dumb Mistakes','savings'],
+    [/^coffee machine/,'Coffee Machine','savings'],
+    [/^emergency fund/,'Emergency Fund 2.0','savings'],
+    [/^bailey deduct/,'Bailey Deductible','savings'],
+    [/^cc annual|^card fee|^annual fee|^credit card.*fee/,'Credit Card Annual Fees','savings'],
+    [/^car trans/,'Car Transmission','savings'],
+    [/^roth ira/,'Roth IRA','invest'],
+    [/^rddt/,'RDDT','invest'],
+    [/^jpm/,'JPM','invest'],
+  ];
+  for(const [pattern, category, group] of savingsFundNames) {
+    if(pattern.test(t)) return {category, group, confidence:'high', amount};
+  }
+
+  // Rules: [pattern, category, group]
+  const rules = [
+    // SAVINGS / fund transfers
+    [/transmiss|auto repair|muffler|mechanic|jiffy lube|oil change|tire|brakes|pedro.?s auto/,'Car Transmission','savings'],
+    [/annual fee|card fee/,'Credit Card Annual Fees','savings'],
+    [/emergency fund|emerg.*fund/,'Emergency Fund 2.0','savings'],
+    [/coffee machine|espresso machine/,'Coffee Machine','savings'],
+    [/travel.*fund|^travel\s*\$|travel.*saving/,'Travel','savings'],
+    [/indy.*move|move.*fund|indy.*fund/,'Travel','savings'],
+    [/gift.*fund|gifts.*vault/,'Gifts','savings'],
+    [/bailey.*deduct/,'Bailey Deductible','savings'],
+    [/dumb mistake/,'Dumb Mistakes','savings'],
+    [/wedding.*fund|wed.*vault/,'Wedding','savings'],
+    // INVESTING
+    [/roth ira|ira contrib/,'Roth IRA','invest'],
+    [/rddt|reddit.*etf/,'RDDT','invest'],
+    [/jpm.*etf|jpmorgan.*etf/,'JPM','invest'],
+    // NEEDS — fixed bills
+    [/mortgage|hoa|mortgage|rentb/,'Mortgage','needs'],
+    [/talquin|fpl\b|electric|water bill|utility|xfinity|comcast|at&t|verizon|t-mobile|spectrum|internet|phone bill|boost mobile/,'Utilities (Electric/Water)','needs'],
+    [/phone.*plan|mobile.*plan|cricket wireless/,'Phone and Internet','needs'],
+    [/car.*pay|auto.*loan|ally financial|carmax.*pay/,'Car Payment - Loan','needs'],
+    [/bailey.*ins|renters.*ins|home.*ins/,'Bailey Insurance','needs'],
+    [/car.*insur|auto.*insur|geico|progressive|state farm|allstate/,'Car Insurance','needs'],
+    // NEEDS — transport
+    [/shell|bp\b|exxon|chevron|sunoco|marathon|mobil|circle k|wawa.*gas|buc-ee|costco.*gas|gas station|fuel/,'Transportation and Gas','needs'],
+    [/lyft|uber\b|taxi|parking|garage|toll|sunpass|greyhound|amtrak/,'Transportation and Gas','needs'],
+    // NEEDS — groceries
+    [/publix|kroger|aldi|whole foods|trader joe|sprouts|winn.?dixie|food lion|meijer|h-e-b|wegmans|market|grocery|supermarket/,'Groceries and Household','needs'],
+    [/\bcostco\b(?!.*gas)/,'Groceries and Household','needs'],
+    [/walmart(?!.*gas)/,'Groceries and Household','needs'],
+    [/sam.?s club/,'Groceries and Household','needs'],
+    // WANTS — dining
+    [/restaurant|cava|chipotle|chick.?fil|mcdonald|burger king|wendy.?s|taco bell|popeyes|domino|papa john|pizza hut|subway\b|five guys|shake shack|cracker barrel|ihop|waffle house|denny.?s|olive garden|applebee|outback|culver|poke|noodle|sushi|ramen|bbq|grill\b|bistro|tavern|brewery|draft house|kami poke|cava|mita.?s/,'Dining Out','wants'],
+    [/doordash|ubereats|grubhub|instacart.*restaurant|seamless/,'Dining Out','wants'],
+    [/starbucks|dunkin|dutch bros|coffee(?!.*machine)|cafe\b|panera/,'Dining Out','wants'],
+    // WANTS — entertainment
+    [/netflix|hulu|disney\+|spotify|apple.*music|youtube.*premium|hbo|peacock|paramount|amc\b|cinemark|regal|theater|theatre|nintendo|steam\b|playstation|xbox|ticketmaster|tickets.*at.*work|seat geek|stub hub/,'Entertainment and Hobbies','wants'],
+    [/concert|event|show\b|museum|zoo|aquarium|bowling|mini golf|escape room/,'Entertainment and Hobbies','wants'],
+    // WANTS — fitness
+    [/gym|planet fitness|anytime fitness|la fitness|ymca|crossfit|orange theory|peloton|crunch fitness/,'Fitness (gym, classes)','wants'],
+    // WANTS — shopping
+    [/amazon|amzn/,'Shopping / Personal Care','wants'],
+    [/target\b|marshall|tj maxx|ross\b|burlington|nordstrom|macy|gap\b|old navy|h&m|zara|abercrombie|ae\b|american eagle|forever 21|uniqlo/,'Shopping / Personal Care','wants'],
+    [/cvs|walgreen|rite aid|pharmacy/,'Shopping / Personal Care','wants'],
+    [/apple.*store|best buy|micro center|b&h photo/,'Shopping / Personal Care','wants'],
+    [/prime\b|amazon prime/,'Prime','wants'],
+    // WANTS — misc travel (non-fund)
+    [/chase travel|expedia|hotels\.com|airbnb|vrbo|booking\.com|delta|american air|southwest|united air|spirit air|frontier air|rental car|enterprise rent|hertz|avis/,'Dumb Mistakes','savings'],
+  ];
+
+  for(const [pattern, category, group] of rules) {
+    if(pattern.test(t)) return {category, group, confidence:'high', amount};
+  }
+
+  return {category:'Shopping / Personal Care', group:'wants', confidence:'low', amount};
+}
+
+function parseMerchant(text) {
+  return text
+    .replace(/-?\s*\$[\d,]+\.?\d*/g,'')
+    .replace(/-\s*[\d,]+\.?\d*/g,'')
+    .replace(/\b(at|the|from|for|paid|spent|buying|bought|withdrawal|withdrew)\b/gi,'')
+    .trim()
+    .replace(/\s+/g,' ')
+    .split(' ').slice(0,4).join(' ')
+    .trim() || text.trim();
+}
+
+// ── QUICK ADD ──
+function onInputChange() {
+  hidePicker();
+}
+
+function quickAdd() {
+  const raw = document.getElementById('quick-input').value.trim();
+  if(!raw) return;
+  const month = document.getElementById('quick-month').value;
+  const card  = document.getElementById('quick-card').value;
+  const result = categorize(raw);
+  const merchant = parseMerchant(raw);
+
+  const txn = {merchant, category: result.category, group: result.group, card, month, amount: result.amount};
+
+  // Withdrawals skip the speedbump and go straight through
+  if(result.amount < 0) {
+    commit(txn);
+    return;
+  }
+
+  if(result.confidence === 'low') {
+    // show category picker
+    pendingTxn = txn;
+    document.getElementById('cat-override').value = result.category;
+    document.getElementById('cat-picker').classList.add('show');
+    document.getElementById('quick-input').focus();
+    return;
+  }
+
+  maybeSpedbump(txn);
+}
+
+function confirmWithOverride() {
+  if(!pendingTxn) return;
+  const cat = document.getElementById('cat-override').value;
+  pendingTxn.category = cat;
+  pendingTxn.group = getCatGroup(cat);
+  hidePicker();
+  maybeSpedbump(pendingTxn);
+  pendingTxn = null;
+}
+
+function hidePicker() {
+  document.getElementById('cat-picker').classList.remove('show');
+}
+
+function getCatGroup(cat) {
+  for(const [g, cats] of Object.entries(BUDGET)) if(cat in cats) return g;
+  return 'wants';
+}
+
+function maybeSpedbump(txn) {
+  const actual = getActual(txn.month);
+  const budget = getBudgetFor(txn.category);
+  const spent  = actual[txn.category] || 0;
+  const pct    = budget ? (spent / budget) * 100 : 0;
+
+  if(budget && pct >= 80) {
+    pendingTxn = txn;
+    const over = pct >= 100;
+    const rem  = budget - spent;
+    document.getElementById('sb-title').textContent = over
+      ? `Over budget — ${txn.category}` : `Almost out — ${txn.category}`;
+    document.getElementById('sb-msg').innerHTML = over
+      ? `You've spent <strong>$${Math.round(spent)}</strong> of your <strong>$${budget}</strong> budget. This $${txn.amount.toFixed(2)} puts you <strong>$${Math.abs(Math.round(rem - txn.amount))} over</strong>.`
+      : `<strong>${Math.round(pct)}%</strong> used. Only <strong>$${Math.round(rem)}</strong> left this month for ${txn.category}.`;
+    document.getElementById('speedbump').classList.add('show');
+  } else {
+    commit(txn);
+  }
+}
+
+function sbProceed() {
+  document.getElementById('speedbump').classList.remove('show');
+  if(pendingTxn) { commit(pendingTxn); pendingTxn = null; }
+}
+function sbCancel() {
+  document.getElementById('speedbump').classList.remove('show');
+  pendingTxn = null;
+  toast('Purchase not logged');
+}
+
+function commit(txn) {
+  transactions.push(txn);
+  save();
+  pushTxn(txn); // sync to Sheets
+  document.getElementById('quick-input').value = '';
+  hidePicker();
+  renderDashboard();
+  const sign = txn.amount < 0 ? '↩ Withdrawal: ' : '✓ ';
+  toast(`${sign}${txn.merchant} $${Math.abs(Number(txn.amount)).toFixed(2)} → ${txn.category}`);
+}
+
+// ── CHIPS ──
+function buildChips() {
+  const hist = {};
+  transactions.forEach(t => { hist[t.merchant] = (hist[t.merchant]||0)+1; });
+  const top = Object.entries(hist).sort((a,b)=>b[1]-a[1]).slice(0,5).map(x=>x[0]);
+  const defaults = ['Publix','Costco','Cava','Amazon','Target','Costco Gas','DoorDash','Chipotle','Travel'];
+  const all = [...new Set([...top,...defaults])].slice(0,10);
+  document.getElementById('chips').innerHTML = all.map(m=>`<div class="chip" onclick="chipClick('${m}')">${m}</div>`).join('');
+}
+function chipClick(m) {
+  document.getElementById('quick-input').value = m + ' ';
+  document.getElementById('quick-input').focus();
+}
+
+// ── HELPERS ──
+function getActual(month) {
+  const r={};
+  transactions.filter(t=>t.month===month).forEach(t=>{r[t.category]=(r[t.category]||0)+t.amount;});
+  return r;
+}
+function getBudgetFor(cat) {
+  for(const g of Object.values(BUDGET)) if(cat in g) return g[cat];
+  return 0;
+}
+function save() { localStorage.setItem('pfx_txns', JSON.stringify(transactions)); }
+
+// ── DASHBOARD ──
+function renderDashboard() {
+  buildChips();
+  const month = document.getElementById('quick-month').value;
+  const actual = getActual(month);
+  const mTxns  = transactions.filter(t=>t.month===month);
+  const sum = g => mTxns.filter(t=>t.group===g).reduce((s,t)=>s+t.amount,0);
+  const tN=sum('needs'),tI=sum('invest'),tS=sum('savings'),tW=sum('wants');
+  const totalBudget = Object.values(BUDGET).flatMap(g=>Object.values(g)).reduce((s,v)=>s+v,0);
+  const totalSpent  = tN+tI+tS+tW;
+  const needsWantsBudget = Object.values(BUDGET.needs).reduce((s,v)=>s+v,0) + Object.values(BUDGET.wants).reduce((s,v)=>s+v,0);
+
+  document.getElementById('dash-metrics').innerHTML=`
+    <div class="metric">
+      <div class="metric-label">Real spend</div>
+      <div class="metric-val" style="color:${(tN+tW)>needsWantsBudget?'var(--danger)':'var(--text)'}">$${Math.round(tN+tW).toLocaleString()}</div>
+      <div class="metric-sub">of $${Math.round(needsWantsBudget).toLocaleString()} budget</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Saved + invested</div>
+      <div class="metric-val" style="color:var(--invest)">$${Math.round(tS+tI).toLocaleString()}</div>
+      <div class="metric-sub">${Math.round(((tS+tI)/4470)*100)}% of take-home</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Transactions</div>
+      <div class="metric-val">${mTxns.length}</div>
+      <div class="metric-sub">${month}</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Budget left</div>
+      <div class="metric-val" style="color:${totalBudget-totalSpent<0?'var(--danger)':'var(--ok)'}">$${Math.round(totalBudget-totalSpent).toLocaleString()}</div>
+      <div class="metric-sub">of $${Math.round(totalBudget).toLocaleString()} total</div>
+    </div>`;
+
+  ['needs','invest','savings','wants'].forEach(g=>renderSection(g,actual));
+}
+
+function renderSection(group, actual) {
+  const catMap = BUDGET[group];
+  const el = document.getElementById('cats-'+group);
+  const bt = document.getElementById('bt-'+group);
+  let bTot=0, aTot=0;
+  el.innerHTML='';
+  Object.entries(catMap).forEach(([cat,budget])=>{
+    const act = actual[cat]||0;
+    bTot+=budget; aTot+=act;
+    const pct  = Math.min(100,(act/budget)*100);
+    const over = act>budget, warn = !over&&pct>=80;
+    const color= over?'var(--danger)':warn?'var(--warn)':GC[group];
+    el.innerHTML+=`<div class="cat-row">
+      <div class="cat-top">
+        <span class="cat-name">${cat}</span>
+        <span class="cat-rem" style="color:${over?'var(--danger)':warn?'var(--warn)':'var(--text2)'}">${over?'–$'+Math.abs(Math.round(act-budget)):'+$'+Math.round(budget-act)}</span>
+      </div>
+      <div class="pb"><div class="pf" style="width:${pct}%;background:${color}"></div></div>
+      <div class="cat-sub"><span>$${act.toFixed(0)} spent</span><span>$${budget%1===0?budget:budget.toFixed(2)} budget</span></div>
+    </div>`;
+  });
+  const rem = bTot-aTot;
+  bt.textContent=`$${Math.round(aTot).toLocaleString()} / $${Math.round(bTot).toLocaleString()}`;
+  bt.style.color = rem<0?'var(--danger)':rem<bTot*.1?'var(--warn)':'var(--ok)';
+}
+
+// ── LOG ──
+function renderLog() {
+  const month = document.getElementById('log-month').value;
+  const group = document.getElementById('log-group').value;
+  let f = transactions;
+  if(month!=='all') f=f.filter(t=>t.month===month);
+  if(group!=='all') f=f.filter(t=>t.group===group);
+  const tb=document.getElementById('log-tbody');
+  const empty=document.getElementById('log-empty');
+  tb.innerHTML='';
+  if(!f.length){empty.style.display='block';return;}
+  empty.style.display='none';
+  const indexed=f.map(t=>({t,i:transactions.indexOf(t)})).sort((a,b)=>b.i-a.i);
+  indexed.forEach(({t,i})=>{
+    const gc=GB[t.group]||'bn';
+    const isWithdrawal = Number(t.amount) < 0;
+    const amtDisplay = (isWithdrawal ? '–' : '') + '$' + Math.abs(Number(t.amount)).toFixed(2);
+    const amtColor = isWithdrawal ? 'color:var(--invest)' : '';
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td style="color:var(--text3);font-size:12px">${t.month}</td><td>${t.merchant}${isWithdrawal?' <span style="font-size:10px;color:var(--invest)">(withdrawal)</span>':''}</td><td style="font-size:11px">${t.category}</td><td><span class="badge ${gc}">${GL[t.group]||t.group}</span></td><td style="color:var(--text3);font-size:11px">${t.card||'—'}</td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;${amtColor}">${amtDisplay}</td><td><button class="del-btn" onclick="delTxn(${i})">×</button></td>`;
+    tb.appendChild(tr);
+  });
+}
+
+function delTxn(i){
+  const txn = transactions[i];
+  transactions.splice(i,1);
+  save();
+  if(txn && txn.id) deleteTxnRemote(txn.id);
+  renderLog();renderDashboard();toast('Deleted');
+}
+
+function clearAll(){
+  if(confirm('Clear ALL transactions?')){transactions=[];save();renderLog();renderDashboard();toast('Cleared');}
+}
+
+function exportCSV(){
+  if(!transactions.length){alert('No transactions.');return;}
+  const rows=[['Month','Merchant','Category','Group','Card','Amount'],...transactions.map(t=>[t.month,t.merchant,t.category,GL[t.group]||t.group,t.card||'',Number(t.amount).toFixed(2)])];
+  const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');
+  const a=document.createElement('a');
+  a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);
+  a.download='pedro-transactions.csv';a.click();
+}
+
+// ── SETTINGS ──
+function renderSettings(){
+  const ed=document.getElementById('budget-editor');
+  ed.innerHTML='';
+  Object.entries(BUDGET).forEach(([group,cats])=>{
+    const h=document.createElement('div');
+    h.style.cssText='grid-column:1/-1;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding-top:10px;margin-bottom:2px';
+    h.textContent=GL[group];
+    ed.appendChild(h);
+    Object.entries(cats).forEach(([cat,val])=>{
+      const w=document.createElement('div');
+      w.innerHTML=`<label class="form-label">${cat}</label><input type="number" data-group="${group}" data-cat="${cat}" value="${val}" step="0.01">`;
+      ed.appendChild(w);
+    });
+  });
+}
+
+function saveBudget(){
+  document.querySelectorAll('#budget-editor input').forEach(inp=>{
+    BUDGET[inp.dataset.group][inp.dataset.cat]=parseFloat(inp.value)||0;
+  });
+  localStorage.setItem('pfx_budget',JSON.stringify(BUDGET));
+  toast('Budget saved'); renderDashboard();
+}
+
+// ── NAV ──
+function nav(el){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  const page=el.dataset.page;
+  document.getElementById('page-'+page).classList.add('active');
+  el.classList.add('active');
+  if(page==='dashboard') renderDashboard();
+  if(page==='log') renderLog();
+  if(page==='settings') renderSettings();
+}
+
+function toast(msg,d=2500){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),d);
+}
+
+// ── INIT ──
+renderDashboard();
+loadFromSheets();
+</script>
 </body>
 </html>
