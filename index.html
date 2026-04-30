@@ -257,7 +257,7 @@ select option{background:var(--bg2)}
 <script>
 
 // ── GOOGLE SHEETS SYNC ──
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyGl7Z7OIsTCV-9XZf4QlAPMKEelq7GVFN68jEy2w9hnPPIDkt3I9AbIWYVHJkjs8UMBg/exec';
+const APPS_SCRIPT_URL = 'PASTE_YOUR_APPS_SCRIPT_URL_HERE';
 let syncing = false;
 
 function setSyncStatus(state, msg) {
@@ -271,11 +271,8 @@ function setSyncStatus(state, msg) {
 async function apiCall(action, body={}) {
   try {
     setSyncStatus('loading', '⟳ syncing...');
-    const res = await fetch(APPS_SCRIPT_URL + '?action=' + action, {
-      method: 'POST',
-      body: JSON.stringify({action, ...body}),
-      headers: {'Content-Type': 'application/json'}
-    });
+    const url = APPS_SCRIPT_URL + '?action=' + action + '&data=' + encodeURIComponent(JSON.stringify(body));
+    const res = await fetch(url);
     const data = await res.json();
     if(data.error) throw new Error(data.error);
     setSyncStatus('ok', '✓ synced');

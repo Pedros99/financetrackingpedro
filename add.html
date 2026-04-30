@@ -179,7 +179,7 @@ select:focus{border-color:var(--border2)}
 
 <script>
 // ── CONFIG ──
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyGl7Z7OIsTCV-9XZf4QlAPMKEelq7GVFN68jEy2w9hnPPIDkt3I9AbIWYVHJkjs8UMBg/exec';
+const APPS_SCRIPT_URL = 'PASTE_YOUR_APPS_SCRIPT_URL_HERE';
 
 const BUDGET = {
   needs:   {Mortgage:663,'Utilities (Electric/Water)':200,'Phone and Internet':80,'Car Payment - Loan':300,'Bailey Insurance':31.96,'Car Insurance':180,'Transportation and Gas':120,'Groceries and Household':350},
@@ -319,10 +319,8 @@ function setSyncDot(state){ const d=document.getElementById('sync-dot'); d.class
 async function api(action, body={}) {
   setSyncDot('loading');
   try {
-    const res = await fetch(APPS_SCRIPT_URL + '?action=' + action, {
-      method:'POST', body:JSON.stringify({action,...body}),
-      headers:{'Content-Type':'application/json'}
-    });
+    const url = APPS_SCRIPT_URL + '?action=' + action + '&data=' + encodeURIComponent(JSON.stringify(body));
+    const res = await fetch(url);
     const data = await res.json();
     setSyncDot('ok');
     return data;
